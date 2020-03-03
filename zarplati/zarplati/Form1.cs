@@ -26,7 +26,12 @@ namespace zarplati
             SqlCommand com = new SqlCommand($"Select Login_manager From manager where Login_manager = '{textBox1.Text}' and Password = '{textBox2.Text}'", con);
             SqlDataReader dr = com.ExecuteReader();
             if (dr.HasRows)
+            {
                 MessageBox.Show("заходи дружище");
+                Form2 f = new Form2();
+                f.Show();
+                this.Hide();
+            }
             else
                 MessageBox.Show("ты не наш");
         }
