@@ -21,19 +21,24 @@ namespace zarplati
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//
             con.Open();
-            SqlCommand com = new SqlCommand($"Select Login_manager From manager where Login_manager = '{textBox1.Text}' and Password = '{textBox2.Text}'", con);
+            SqlCommand com = new SqlCommand($"Select * From manager where Login_manager = '{textBox1.Text}' and Password = '{textBox2.Text}'", con);
             SqlDataReader dr = com.ExecuteReader();
             if (dr.HasRows)
             {
+                dr.Read();
                 MessageBox.Show("заходи дружище");
                 Form2 f = new Form2();
+                f.id = Int32.Parse(dr[0].ToString());
+               
                 f.Show();
                 this.Hide();
+                dr.Close();
             }
             else
                 MessageBox.Show("ты не наш");
+            con.Close();
         }
     }
 }
