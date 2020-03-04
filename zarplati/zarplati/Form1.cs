@@ -21,7 +21,7 @@ namespace zarplati
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {//
+        {
             con.Open();
             SqlCommand com = new SqlCommand($"Select * From manager where Login_manager = '{textBox1.Text}' and Password = '{textBox2.Text}'", con);
             SqlDataReader dr = com.ExecuteReader();
