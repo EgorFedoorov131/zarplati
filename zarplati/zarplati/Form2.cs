@@ -52,7 +52,7 @@ namespace zarplati
         private void button1_Click(object sender, EventArgs e)
         {
             
-            int managerid = 0;
+
             con.Open();
             
             {
@@ -63,7 +63,7 @@ namespace zarplati
                     $"[coef_time] = {textBox7.Text}, " +
                     $"[coef_complexity] = {textBox8.Text}, " +
                     $"[coef_money] = {textBox9.Text} " +
-                    $"WHERE id = '{managerid}'", con);
+                    $"WHERE id = '{id}'", con);
                 if (com.ExecuteNonQuery() != 0) MessageBox.Show("Коэфы изменены");
                 else MessageBox.Show("Ошибка при добавлении");
 
