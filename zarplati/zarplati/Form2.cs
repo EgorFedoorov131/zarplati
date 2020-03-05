@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace zarplati
 {
@@ -46,6 +47,33 @@ namespace zarplati
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            int managerid = 0;
+            con.Open();
+            
+            {
+                SqlCommand com = new SqlCommand($"UPDATE coeefs SET " +
+                    $"[coef_analiz] = {textBox4.Text}, " +
+                    $"[coef_device] = {textBox5.Text}, " +
+                    $"[coef_service] = {textBox6.Text}, " +
+                    $"[coef_time] = {textBox7.Text}, " +
+                    $"[coef_complexity] = {textBox8.Text}, " +
+                    $"[coef_money] = {textBox9.Text} " +
+                    $"WHERE id = '{managerid}'", con);
+                if (com.ExecuteNonQuery() != 0) MessageBox.Show("Коэфы изменены");
+                else MessageBox.Show("Ошибка при добавлении");
+
+            }
+            con.Close();
+        }
+        
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
