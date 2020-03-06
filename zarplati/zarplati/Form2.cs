@@ -69,6 +69,18 @@ namespace zarplati
 
             }
             con.Close();
+
+            con.Open();
+            {
+                SqlCommand com = new SqlCommand($"UPDATE grade SET " +
+                    $"[Junior] = {textBox1.Text}, " +
+                    $"[Middle] = {textBox2.Text}, " +
+                    $"[Senior] = {textBox3.Text} " +
+                    $"Where id = '{id}'", con);
+                if (com.ExecuteNonQuery() != 0) MessageBox.Show("Коэфы изменены");
+                else MessageBox.Show("Ошибка при добавлении");
+            }
+            con.Close();
         }
         
         private void groupBox2_Enter(object sender, EventArgs e)
